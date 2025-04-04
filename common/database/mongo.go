@@ -15,7 +15,7 @@ import (
 var MongoClient *mongo.Client
 
 // InitMongoDB initializes the MongoDB connection.
-func InitMongoDB() {
+func InitMongoDB() *mongo.Client{
 	mongoURI := os.Getenv("MONGO_URI") // MongoDB URI from environment variable.
 	if mongoURI == "" {
 		log.Fatal("MONGO_URI environment variable is not set")
@@ -47,4 +47,6 @@ func InitMongoDB() {
 
 	MongoClient = client
 	fmt.Println("MongoDB connection established")
+
+	return MongoClient
 }
